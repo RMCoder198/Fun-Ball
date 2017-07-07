@@ -2,17 +2,13 @@
 <head>
 	<title>Fun Ball</title>
 <script type="text/javascript" src="paper-full.js">
-//alert("help");
 </script>
 <script type="text/paperscript" canvas="myCanvas">
-	//Create a centered text item at the center of the view:
 var path = new Path.Circle({
 	center: view.center,
 	radius: 40,
 	fillColor: 'red'
 });
-// Define a random point in the view, which we will be moving
-// the text item towards.
 var destination = Point.random() + 40 ;
 
 function onFrame(event) {
