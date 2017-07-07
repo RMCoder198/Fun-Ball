@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>Fun Ball</title>
+<script type="text/javascript" src="paper-full.js">
+//alert("help");
+</script>
+<script type="text/paperscript" canvas="myCanvas">
+	//Create a centered text item at the center of the view:
+var path = new Path.Circle({
+	center: view.center,
+	radius: 40,
+	fillColor: 'red'
+});
+// Define a random point in the view, which we will be moving
+// the text item towards.
+var destination = Point.random() + 40 ;
+
+function onFrame(event) {
+	var vector = destination - path.position;
+	
+	path.position += vector/30;
+	
+	if (vector.length < 80) {
+		destination = Point.random() * view.size;
+	}
+	path.fillColor.hue += 1;
+}
+
+
+</script>
+<style type="text/css">
+#myCanvas{
+	background: rgba(128,128,128,0.5);
+	width:50%;
+	margin-left: 300px;
+	margin-top: 50px;
+	
+}
+#header1{
+	margin-top: 50px;
+	margin-left: 500px;
+
+}
+#header2{
+color: black;
+	margin-left: 650px;
+}
+body{
+	background: rgba(0,0,255,0.3);
+}
+</style>
+</head>
+<body >
+
+<h1 id="header1">Moving and Color changing</h1>
+<h1 id="header2">Ball</h1>
+<canvas id="myCanvas" resize></canvas>
+<script type="text/javascript" >
+var h=document.querySelector("body");
+var i;
+var ar=["rgba(0,255,0,0.5)","rgba(0,0,255,0.5)","rgba(255,0,0,0.5)"];
+  
+function jsHello(i) {
+    if (i===0){
+    	jsHello(3);
+    } 
+
+    setTimeout(function () {
+
+        h.style.background=ar[i];
+
+        jsHello(--i);
+
+    }, 1500);
+}
+
+	jsHello(2);
+</script>
+</body>
+</html>
